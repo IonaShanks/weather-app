@@ -1,0 +1,25 @@
+<div class="city-card__box">    
+    <div class="city-card__sky-icon">
+        <span [attr.class]="weather.icon"><img [src]="weather.icon" width=200% /></span>
+    </div>
+    <div class="city-card__temperature">
+        {{ weather.temp }}°C
+    </div>
+    <div class="city-card__city-name" title="Washington">
+        {{ weather.city }}
+        <div class="city-card__sky-state city-card__sky-state--city-name">
+            {{ weather.description }}
+        </div>
+    </div>
+    <div class="city-card__info">
+        <div class="city-card__info-list">
+            
+                <div class="city-card__info-list-item">
+                    <strong>Humidity:</strong>
+                    <span *ngIf="weather.humidity">{{ weather.humidity }}%</span>
+                </div>
+            </div>
+        
+    </div>
+    <br />   
+</div>
