@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherdataService } from './weatherdata.service';
 import { mockWeatherJSON } from '../../mocks/mockWeather';
-import {mockIconURL} from '../../mocks/mockIcon'
-import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { mockIconURL } from '../../mocks/mockIcon'
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('WeatherdataService', () => {
   let service: WeatherdataService;
@@ -20,7 +20,7 @@ describe('WeatherdataService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  
+
   //Test getCurrentWeatherByCity api call
   it('should call getCurrentWeatherByCity and return a JSON object of weather', () => {
     service.getCurrentWeatherByCity('London').subscribe((res) => {
@@ -35,13 +35,9 @@ describe('WeatherdataService', () => {
     req.flush(mockWeatherJSON);
   });
 
-  //Test getIconUrl
+  //Test getIconUrl returns correct url
   it('should call getIconUrl and return a url for the icon', () => {
-    
-    
-  expect(service.getIconUrl('04d')).toEqual(mockIconURL);
- 
-  
+    expect(service.getIconUrl('04d')).toEqual(mockIconURL);
   });
 
 });
