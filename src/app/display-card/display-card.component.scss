@@ -20,10 +20,14 @@
         text-align: center;
     }
 
-    &__sky-icon {
-        position: absolute;
+    &__gauge {
+        text-align: center;
+    }
+
+    &__sky-icon {        
         top: 3em;
         left: 10%;
+        text-align: center;
     }
 
     &__city-name {
@@ -49,6 +53,7 @@
         justify-content: center;
         color: #656565;
         font-size: .8em;
+        padding-bottom: 2.5em;
 
         &-list {
             margin: 0 9%;
