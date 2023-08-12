@@ -17,6 +17,7 @@ export class WeatherComponent {
 
   submit() {
     this.weatherData.getCurrentWeatherByCity(this.city).subscribe((data: any) => {
+      //Updates values on the weather object
       this.weather.city = data.name;
       this.weather.description = data.weather[0].description;
       this.weather.temp = Math.round(data.main.temp);
