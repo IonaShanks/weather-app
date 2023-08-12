@@ -12,7 +12,7 @@ export class WeatherdataService {
 
   //API call to OpenWeather to get the weather based on the city input
   getCurrentWeatherByCity(city: String) {
-    return this.http.get(apiConfig.host + '?q=' + city + '&APPID=' + apiConfig.apiKey + '&units=' +apiConfig.unit);
+    return this.http.get(apiConfig.host + '?q=' + city + '&APPID=' + apiConfig.apiKey + '&units=' +apiConfig.unit)
   }
 
   //Call to get the image for the icon id provided by OpenWeather
