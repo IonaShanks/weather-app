@@ -1,25 +1,40 @@
-<div class="city-card__box">    
-    <div class="city-card__sky-icon">
-        <span [attr.class]="weather.icon"><img [src]="weather.icon" width=200% /></span>
-    </div>
-    <div class="city-card__temperature">
+<div class="city-card__box">
+    <div class="city-card__temperature" *ngIf="weather.temp">
+        <div class="city-card__gauge">
+            <igx-radial-gauge #radialGauge scaleStartAngle=135 scaleEndAngle=45 scaleBrush="white"
+                scaleSweepDirection="Clockwise" scaleOversweep=1 scaleOversweepShape="Fitted" scaleStartExtent=0.45
+                scaleEndExtent=0.575 height="350px" width="350px" minimumValue=-10 value="{{ weather.temp }}"
+                maximumValue=40 interval=5>
+                <igx-radial-gauge-range startValue="-10" endValue="0" brush="blue">
+                </igx-radial-gauge-range>
+                <igx-radial-gauge-range startValue="0" endValue="10" brush="linear-gradient(1deg, blue, yellow)">
+                </igx-radial-gauge-range>
+                <igx-radial-gauge-range startValue="10" endValue="20" brush="linear-gradient(80deg, yellow, orange)">
+                </igx-radial-gauge-range>
+                <igx-radial-gauge-range startValue="20" endValue="30" brush="linear-gradient(150deg, orange, red)">
+                </igx-radial-gauge-range>
+                <igx-radial-gauge-range startValue="30" endValue="40" brush="red">
+                </igx-radial-gauge-range>
+            </igx-radial-gauge>
+        </div>
         {{ weather.temp }}°C
     </div>
-    <div class="city-card__city-name" title="Washington">
+
+    <div class="city-card__city-name">
         {{ weather.city }}
         <div class="city-card__sky-state city-card__sky-state--city-name">
             {{ weather.description }}
         </div>
     </div>
-    <div class="city-card__info">
-        <div class="city-card__info-list">
-            
-                <div class="city-card__info-list-item">
-                    <strong>Humidity:</strong>
-                    <span *ngIf="weather.humidity">{{ weather.humidity }}%</span>
-                </div>
-            </div>
-        
+    <div class="city-card__sky-icon">
+        <img [src]="weather.icon" />
     </div>
-    <br />   
+    <div class="city-card__info" *ngIf="weather.humidity">
+        <div class="city-card__info-list">
+            <div class="city-card__info-list-item">
+                <strong>Humidity:</strong>
+                {{ weather.humidity }}%
+            </div>
+        </div>
+    </div>
 </div>
