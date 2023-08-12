@@ -37,4 +37,47 @@
             </div>
         </div>
     </div>
+    
+<h3 *ngIf="forecast.day1temp"> 5 Day forecast for {{ weather.city }}</h3>
+    <div class="city-card__info" *ngIf="weather.humidity">
+        <div class="city-card__info-list">
+            <div class="city-card__info-list-item">
+                <strong>{{ forecast.currentDay1 }}: </strong>
+                <img [src]="forecast.day1icon" /> Temperature: {{ forecast.day1temp }}°C
+            </div>
+        </div>
+    </div>
+    <div class="city-card__info" *ngIf="weather.humidity">
+        <div class="city-card__info-list">
+            <div class="city-card__info-list-item">
+                <strong>{{ forecast.currentDay2 }}: </strong>
+                <img [src]="forecast.day2icon" /> Temperature: {{ forecast.day2temp }}°C
+            </div>
+        </div>
+    </div>
+    <div class="city-card__info" *ngIf="weather.humidity">
+        <div class="city-card__info-list">
+            <div class="city-card__info-list-item">
+                <strong>{{ forecast.currentDay3 }}: </strong>
+                <img [src]="forecast.day3icon" /> Temperature: {{ forecast.day3temp }}°C
+            </div>
+        </div>
+    </div>
+    <div class="city-card__info" *ngIf="weather.humidity">
+        <div class="city-card__info-list">
+            <div class="city-card__info-list-item">
+                <strong>{{ forecast.currentDay4 }}: </strong>
+                <img [src]="forecast.day4icon" /> Temperature: {{ forecast.day4temp }}°C
+            </div>
+        </div>
+    </div>
+    <div class="city-card__info" *ngIf="weather.humidity">
+        <div class="city-card__info-list">
+            <div class="city-card__info-list-item">
+                <strong>{{ forecast.currentDay5 }}: </strong>
+                <img [src]="forecast.day5icon" /> Temperature: {{ forecast.day5temp }}°C
+            </div>
+        </div>
+    </div>
+    
 </div>
