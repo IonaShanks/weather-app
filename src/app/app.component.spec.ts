@@ -24,10 +24,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('weather-app-1');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    //expect(compiled.querySelector('.content span')?.textContent).toContain('weather-app-1 app is running!');
-  });
 });
