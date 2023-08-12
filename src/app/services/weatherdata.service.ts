@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { apiConfig } from '../config';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +17,6 @@ export class WeatherdataService {
 
   //Call to get the image for the icon id provided by OpenWeather
   getIconUrl(icon: String) {
-    return 'http://openweathermap.org/img/w/' + icon + ".png"
+    return 'https://openweathermap.org/img/w/' + icon + ".png"
   }
 }

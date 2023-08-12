@@ -16,5 +16,5 @@ export class Weather {
 })
 
 export class AppComponent {
-  title = 'weather';
+  title = 'weather-app-1';
 }
