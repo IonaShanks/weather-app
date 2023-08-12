@@ -16,6 +16,7 @@ export class DisplayCardComponent {
     pressure: 0
   }
   
+  //Updates the information displayed based on the input
   update(weather: Weather) {
     this.weather = weather
   }
