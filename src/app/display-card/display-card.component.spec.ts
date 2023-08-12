@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
 import { DisplayCardComponent } from './display-card.component';
 
 describe('DisplayCardComponent', () => {
@@ -7,7 +7,7 @@ describe('DisplayCardComponent', () => {
   let fixture: ComponentFixture<DisplayCardComponent>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
+    TestBed.configureTestingModule({ imports: [HttpClientModule],
       declarations: [DisplayCardComponent]
     });
     fixture = TestBed.createComponent(DisplayCardComponent);

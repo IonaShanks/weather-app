@@ -1,0 +1,1 @@
+export const mockIconURL = 'https://openweathermap.org/img/w/04d.png';
