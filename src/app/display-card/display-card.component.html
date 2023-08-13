@@ -1,40 +1,69 @@
-<div class="city-card__box">
-    <div class="city-card__temperature" *ngIf="weather.temp">
-        <div class="city-card__gauge">
-            <igx-radial-gauge #radialGauge scaleStartAngle=135 scaleEndAngle=45 scaleBrush="white"
-                scaleSweepDirection="Clockwise" scaleOversweep=1 scaleOversweepShape="Fitted" scaleStartExtent=0.45
-                scaleEndExtent=0.575 height="350px" width="350px" minimumValue=-10 value="{{ weather.temp }}"
-                maximumValue=40 interval=5>
-                <igx-radial-gauge-range startValue="-10" endValue="0" brush="blue">
-                </igx-radial-gauge-range>
-                <igx-radial-gauge-range startValue="0" endValue="10" brush="linear-gradient(1deg, blue, yellow)">
-                </igx-radial-gauge-range>
-                <igx-radial-gauge-range startValue="10" endValue="20" brush="linear-gradient(80deg, yellow, orange)">
-                </igx-radial-gauge-range>
-                <igx-radial-gauge-range startValue="20" endValue="30" brush="linear-gradient(150deg, orange, red)">
-                </igx-radial-gauge-range>
-                <igx-radial-gauge-range startValue="30" endValue="40" brush="red">
-                </igx-radial-gauge-range>
-            </igx-radial-gauge>
+<mat-card>
+    <div class="card-description">Current weather: </div>
+    <mat-card-header>
+                <div mat-card-avatar *ngIf="weather.temp"><img [src]="forecast.day1icon" /></div>
+                <mat-card-title>{{ weather.city }}</mat-card-title>
+                <mat-card-subtitle>{{ weather.description }}</mat-card-subtitle>
+            </mat-card-header>
+            <div mat-card-image></div>
+            <div class="row">
+                <div class="column">
+            <mat-card-content>
+                <div *ngIf="weather.temp">
+                    <igx-radial-gauge #radialGauge scaleStartAngle=135 scaleEndAngle=45 scaleBrush="white"
+                        scaleSweepDirection="Clockwise" scaleOversweep=1 scaleOversweepShape="Fitted"
+                        scaleStartExtent=0.45 scaleEndExtent=0.575 height="300px" width="100%" minimumValue=-10
+                        value="{{ weather.temp }}" maximumValue=40 interval=5 backingStrokeThickness=1>
+                        <igx-radial-gauge-range startValue="-10" endValue="0" brush="blue">
+                        </igx-radial-gauge-range>
+                        <igx-radial-gauge-range startValue="0" endValue="10"
+                            brush="linear-gradient(1deg, blue, yellow)">
+                        </igx-radial-gauge-range>
+                        <igx-radial-gauge-range startValue="10" endValue="20"
+                            brush="linear-gradient(80deg, yellow, orange)">
+                        </igx-radial-gauge-range>
+                        <igx-radial-gauge-range startValue="20" endValue="30"
+                            brush="linear-gradient(150deg, orange, red)">
+                        </igx-radial-gauge-range>
+                        <igx-radial-gauge-range startValue="30" endValue="40" brush="red">
+                        </igx-radial-gauge-range>
+                    </igx-radial-gauge>
+                </div>
+            </mat-card-content>
         </div>
-        {{ weather.temp }}°C
-    </div>
+        <div *ngIf="weather.temp" class="column">
+            <mat-list>
+                <mat-list-item></mat-list-item>
+                <mat-list-item><div matListItemTitle>Humidity: {{ weather.humidity }}%</div> 
+                    </mat-list-item>                
+                <mat-divider></mat-divider>
+                <mat-list-item>Windspeed: {{ weather.windspeed }} kph</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Wind Direction: {{ weather.windDirection }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Pressure: {{ weather.pressure }} hPa</mat-list-item>
+            </mat-list>          
 
-    <div class="city-card__city-name">
-        {{ weather.city }}
-        <div class="city-card__sky-state city-card__sky-state--city-name">
-            {{ weather.description }}
         </div>
     </div>
-    <div class="city-card__sky-icon">
-        <img [src]="weather.icon" />
-    </div>
-    <div class="city-card__info" *ngIf="weather.humidity">
-        <div class="city-card__info-list">
-            <div class="city-card__info-list-item">
-                <strong>Humidity:</strong>
-                {{ weather.humidity }}%
-            </div>
+</mat-card>
+
+<mat-card *ngIf="weather.temp">
+    <div class="card-description">5 Day forecast for {{ weather.city }} </div>
+    <mat-card-content>
+        <div class="forecast" *ngIf="weather.temp">
+            <mat-grid-list cols="5" rowHeight="4:1">
+                <mat-grid-tile><strong>{{ forecast.currentDay1 }} </strong></mat-grid-tile>
+                <mat-grid-tile><strong>{{ forecast.currentDay2 }} </strong></mat-grid-tile>
+                <mat-grid-tile><strong>{{ forecast.currentDay3 }} </strong></mat-grid-tile>
+                <mat-grid-tile><strong>{{ forecast.currentDay4 }} </strong></mat-grid-tile>
+                <mat-grid-tile><strong>{{ forecast.currentDay5 }} </strong></mat-grid-tile>
+                <mat-grid-tile><img [src]="forecast.day1icon" /> {{ forecast.day1temp }}°C</mat-grid-tile>
+                <mat-grid-tile><img [src]="forecast.day2icon" /> {{ forecast.day2temp }}°C</mat-grid-tile>
+                <mat-grid-tile><img [src]="forecast.day3icon" /> {{ forecast.day3temp }}°C</mat-grid-tile>
+                <mat-grid-tile><img [src]="forecast.day4icon" /> {{ forecast.day4temp }}°C</mat-grid-tile>
+                <mat-grid-tile><img [src]="forecast.day5icon" /> {{ forecast.day5temp }}°C</mat-grid-tile>
+            </mat-grid-list>
         </div>
-    </div>
-</div>
+    </mat-card-content>
+</mat-card>

@@ -1,6 +1,7 @@
 <div class="search-bar">
-<form (ngSubmit)="submit()">
-    <input class="search-bar__input " placeholder="Search city name here" type="text" name="city" [(ngModel)]="city"><br>
-</form>
+    <form (ngSubmit)="citySearch()">
+        <input class="search-bar__input " placeholder="Search city name here" type="text" name="city"
+            [(ngModel)]="city"><br>
+    </form>
 </div>
 <div class="divider"></div>
