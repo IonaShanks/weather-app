@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherdataService } from './weatherdata.service';
 import { mockWeatherJSON } from '../../mocks/mockWeather';
+import { mockForcastJSON } from '../../mocks/mockForcast';
 import { mockIconURL } from '../../mocks/mockIcon'
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
@@ -41,9 +42,9 @@ describe('WeatherdataService', () => {
   });
 
   //Test getforecastByCity api call
-  it('should call getforecastByCity and return a JSON object of weather', () => {
+  it('should call getforecastByCity and return a JSON object of forcast', () => {
     service.getforecastByCity('London').subscribe((res) => {
-      expect(res).toEqual(mockWeatherJSON);
+      expect(res).toEqual(mockForcastJSON);
     });
 
     const req = httpController.expectOne({
@@ -51,7 +52,7 @@ describe('WeatherdataService', () => {
       url: `${forcastUrl}`,
     });
 
-    req.flush(mockWeatherJSON);
+    req.flush(mockForcastJSON);
   });
 
 });

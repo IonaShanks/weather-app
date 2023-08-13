@@ -1,4 +1,4 @@
     <div class="content-box">
-        <app-weather (onSelection)="display.updateWeather($event)" (onClick)="display.updateforecast($event)"></app-weather><br>
+        <app-weather (onSelection)="display.updateWeather($event)" (onUpdate)="display.updateforecast($event)"></app-weather><br>
         <app-display-card #display></app-display-card> 
     </div>
