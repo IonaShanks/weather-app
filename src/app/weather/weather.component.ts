@@ -2,7 +2,6 @@ import { Component, Output, EventEmitter } from '@angular/core'
 import { WeatherdataService } from '../services/weatherdata.service'
 import { Weather } from '../models/weather.model';
 import { forecast } from '../models/forecast.model';
-//import { forecastComponent } from '../services/forecast.service';
 
 @Component({
   selector: 'app-weather',
@@ -14,15 +13,17 @@ export class WeatherComponent {
   @Output() onSelection: EventEmitter<Weather> = new EventEmitter<Weather>();
   @Output() onClick: EventEmitter<forecast> = new EventEmitter<forecast>();
 
-  weather: Weather = new Weather();
-  city: String;
+  weather: Weather = new Weather();  
   forecast: forecast = new forecast();
+  city: String;
 
   constructor(private weatherData: WeatherdataService) { }
 
   //search by city, on search box sumbit
   citySearch() {
     this.weatherData.getCurrentWeatherByCity(this.city).subscribe((data: any) => {
+      var compassDirection = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+
       //Updates values on the weather object
       this.weather.city = data.name;
       this.weather.description = data.weather[0].description;
@@ -30,6 +31,9 @@ export class WeatherComponent {
       this.weather.icon = this.weatherData.getIconUrl(data.weather[0].icon)
       this.weather.humidity = data.main.humidity;
       this.weather.pressure = data.main.pressure;
+      this.weather.windspeed = Math.round(data.wind.speed * 3.6); //to change from meter/second to kph
+      this.weather.windDirection = compassDirection[((Math.floor((data.wind.deg / 22.5) + 0.5)) % 16)] //translates wind direction from degrees to compass direction
+
 
       //emits the updated weather object to be displayed
       this.onSelection.emit(this.weather);
@@ -59,15 +63,16 @@ export class WeatherComponent {
 
   displayforecast() {
     this.weatherData.getforecastByCity(this.city).subscribe((data: any) => {
-      //Updates values on the forecast object
       let forecastArray: any[] = [];
-      //to only get 5 days as response give every 3 hours for 5 days
+      //to only get 5 days as response give every 3 hours for 5 days (very simplified way, should be done as an average or max off all for the day)
+      //Also shows the same day if looking before 12.00
       data.list.forEach((element: any) => {
-        if (element.dt_txt.includes("12:00:00")) {
+        if (element.dt_txt.includes("09:00:00")) {
           forecastArray.push(element)
         }
       });
 
+      //Updates values on the forecast object
       this.forecast.city = data.city.name;
       this.forecast.currentDay1 = new Date(forecastArray[0].dt_txt).toLocaleString('en-us', { weekday: 'long' });
       this.forecast.currentDay2 = new Date(forecastArray[1].dt_txt).toLocaleString('en-us', { weekday: 'long' });

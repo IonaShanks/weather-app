@@ -5,10 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { WeatherComponent } from './weather/weather.component';
 import { DisplayCardComponent } from './display-card/display-card.component';
 import { FormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider'
+import {MatListModule} from '@angular/material/list';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule, FormsModule, HttpClientModule],
+    imports: [RouterTestingModule, FormsModule, HttpClientModule, MatCardModule, MatDividerModule, MatListModule],
     declarations: [AppComponent, WeatherComponent, DisplayCardComponent]
   }));
 
@@ -18,10 +21,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'weather-app-1'`, () => {
+  it(`should have as title 'Weather'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('weather-app-1');
+    expect(app.title).toEqual('Weather');
   });
 
 });

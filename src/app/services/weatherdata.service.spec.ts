@@ -9,7 +9,7 @@ describe('WeatherdataService', () => {
   let service: WeatherdataService;
   let httpController: HttpTestingController;
   let weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=London&APPID=c2f39d95f2877a016e4a1ecea6b58c56&units=metric';
-  let iconUrl = 'https://openweathermap.org/img/w/04d.png'
+  let forcastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=London&APPID=c2f39d95f2877a016e4a1ecea6b58c56&units=metric'
 
   beforeEach(() => {
     TestBed.configureTestingModule({ imports: [HttpClientModule, HttpClientTestingModule] });
@@ -38,6 +38,20 @@ describe('WeatherdataService', () => {
   //Test getIconUrl returns correct url
   it('should call getIconUrl and return a url for the icon', () => {
     expect(service.getIconUrl('04d')).toEqual(mockIconURL);
+  });
+
+  //Test getforecastByCity api call
+  it('should call getforecastByCity and return a JSON object of weather', () => {
+    service.getforecastByCity('London').subscribe((res) => {
+      expect(res).toEqual(mockWeatherJSON);
+    });
+
+    const req = httpController.expectOne({
+      method: 'GET',
+      url: `${forcastUrl}`,
+    });
+
+    req.flush(mockWeatherJSON);
   });
 
 });

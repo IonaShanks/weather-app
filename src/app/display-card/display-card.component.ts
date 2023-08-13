@@ -14,7 +14,9 @@ export class DisplayCardComponent {
     temp: 0,
     icon: "",
     humidity: 0,
-    pressure: 0
+    pressure: 0,
+    windspeed: 0,
+    windDirection: "",
   }
   
   forecast: forecast = {
