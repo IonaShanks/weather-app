@@ -10,8 +10,8 @@ import { forecast } from '../models/forecast.model';
 })
 
 export class WeatherComponent {
-  @Output() onSelection: EventEmitter<Weather> = new EventEmitter<Weather>();
-  @Output() onClick: EventEmitter<forecast> = new EventEmitter<forecast>();
+  @Output() onSelection = new EventEmitter<Weather>();
+  @Output() onUpdate = new EventEmitter<forecast>();
 
   weather: Weather = new Weather();  
   forecast: forecast = new forecast();
@@ -91,7 +91,7 @@ export class WeatherComponent {
       this.forecast.day5icon = this.weatherData.getIconUrl(forecastArray[4].weather[0].icon);
 
       //emits the updated forecast object to be displayed
-      this.onClick.emit(this.forecast);
+      this.onUpdate.emit(this.forecast);
     })
 
   }
