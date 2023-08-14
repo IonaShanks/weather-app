@@ -9,7 +9,8 @@ describe('WeatherComponent', () => {
   let fixture: ComponentFixture<WeatherComponent>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [HttpClientModule, FormsModule],
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule, FormsModule],
       declarations: [WeatherComponent]
     });
     fixture = TestBed.createComponent(WeatherComponent);
@@ -19,15 +20,14 @@ describe('WeatherComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });  
- 
-  it('should call the onSubmit method when the form is submitted', () =>{
+  });
+
+  it('should call the onSubmit method when the form is submitted', () => {
     let search = spyOn(component, 'citySearch')
     let el = fixture.debugElement.query(By.css('form'));
 
     //triggers the submit event on the form
     el.triggerEventHandler('ngSubmit', null)
-    
     //Checks the search function has been called
     expect(search).toHaveBeenCalled();
   })

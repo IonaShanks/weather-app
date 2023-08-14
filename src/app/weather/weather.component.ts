@@ -13,7 +13,7 @@ export class WeatherComponent {
   @Output() onSelection = new EventEmitter<Weather>();
   @Output() onUpdate = new EventEmitter<forecast>();
 
-  weather: Weather = new Weather();  
+  weather: Weather = new Weather();
   forecast: forecast = new forecast();
   city: String;
 
@@ -37,7 +37,8 @@ export class WeatherComponent {
 
       //emits the updated weather object to be displayed
       this.onSelection.emit(this.weather);
-      this.displayforecast();
+      //Calls the display forecast function to get forecast info after a city has been searched passing in the city from the weather object
+      this.displayforecast(this.weather.city);
       //To clear search bar after submitting
       this.city = "";
     },
@@ -61,8 +62,8 @@ export class WeatherComponent {
   }
 
 
-  displayforecast() {
-    this.weatherData.getforecastByCity(this.city).subscribe((data: any) => {
+  displayforecast(city: String) {
+    this.weatherData.getforecastByCity(city).subscribe((data: any) => {
       let forecastArray: any[] = [];
       //to only get 5 days as response give every 3 hours for 5 days (very simplified way, should be done as an average or max off all for the day)
       //Also shows the same day if looking before 12.00
@@ -74,7 +75,7 @@ export class WeatherComponent {
 
       //Updates values on the forecast object
       this.forecast.city = data.city.name;
-      this.forecast.currentDay1 = new Date(forecastArray[0].dt_txt).toLocaleString('en-us', { weekday: 'long' });
+      this.forecast.currentDay1 = new Date(forecastArray[0].dt_txt).toLocaleString('en-us', { weekday: 'long' }); //extracts the day name from the date
       this.forecast.currentDay2 = new Date(forecastArray[1].dt_txt).toLocaleString('en-us', { weekday: 'long' });
       this.forecast.currentDay3 = new Date(forecastArray[2].dt_txt).toLocaleString('en-us', { weekday: 'long' });
       this.forecast.currentDay4 = new Date(forecastArray[3].dt_txt).toLocaleString('en-us', { weekday: 'long' });

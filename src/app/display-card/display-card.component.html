@@ -1,13 +1,13 @@
 <mat-card>
     <div class="card-description">Current weather: </div>
     <mat-card-header>
-                <div mat-card-avatar *ngIf="weather.temp"><img [src]="forecast.day1icon" /></div>
-                <mat-card-title>{{ weather.city }}</mat-card-title>
-                <mat-card-subtitle>{{ weather.description }}</mat-card-subtitle>
-            </mat-card-header>
-            <div mat-card-image></div>
-            <div class="row">
-                <div class="column">
+        <div mat-card-avatar *ngIf="weather.temp"><img [src]="forecast.day1icon" /></div>
+        <mat-card-title>{{ weather.city }}</mat-card-title>
+        <mat-card-subtitle>{{ weather.description }}</mat-card-subtitle>
+    </mat-card-header>
+    <div mat-card-image></div>
+    <div class="row">
+        <div class="column">
             <mat-card-content>
                 <div *ngIf="weather.temp">
                     <igx-radial-gauge #radialGauge scaleStartAngle=135 scaleEndAngle=45 scaleBrush="white"
@@ -34,15 +34,16 @@
         <div *ngIf="weather.temp" class="column">
             <mat-list>
                 <mat-list-item></mat-list-item>
-                <mat-list-item><div matListItemTitle>Humidity: {{ weather.humidity }}%</div> 
-                    </mat-list-item>                
+                <mat-list-item>
+                    <div matListItemTitle>Humidity: {{ weather.humidity }}%</div>
+                </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>Windspeed: {{ weather.windspeed }} kph</mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>Wind Direction: {{ weather.windDirection }}</mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>Pressure: {{ weather.pressure }} hPa</mat-list-item>
-            </mat-list>          
+            </mat-list>
 
         </div>
     </div>
@@ -67,3 +68,4 @@
         </div>
     </mat-card-content>
 </mat-card>
+<mat-card></mat-card>

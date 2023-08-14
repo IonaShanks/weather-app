@@ -10,7 +10,7 @@ describe('WeatherdataService', () => {
   let service: WeatherdataService;
   let httpController: HttpTestingController;
   let weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=London&APPID=c2f39d95f2877a016e4a1ecea6b58c56&units=metric';
-  let forcastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=London&APPID=c2f39d95f2877a016e4a1ecea6b58c56&units=metric'
+  let forcastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=London&APPID=c2f39d95f2877a016e4a1ecea6b58c56&units=metric';
 
   beforeEach(() => {
     TestBed.configureTestingModule({ imports: [HttpClientModule, HttpClientTestingModule] });

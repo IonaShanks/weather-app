@@ -18,7 +18,7 @@ export class DisplayCardComponent {
     windspeed: 0,
     windDirection: "",
   }
-  
+
   forecast: forecast = {
     city: "",
     currentDay1: "",
@@ -40,7 +40,7 @@ export class DisplayCardComponent {
 
   //Updates the information displayed based on the input
   updateWeather(weather: Weather) {
-    this.weather = weather;    
+    this.weather = weather;
   }
   updateforecast(forecast: forecast) {
     this.forecast = forecast;
