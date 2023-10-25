@@ -1,3 +1,11 @@
+#Weather dashboard technical task
+to Include:
+- API Integration with a public weather API (Used OpenWeatherMap)
+- A search bar for location input, display weather information and weather condition icons or images.
+- Impelment a temperature gauge with specified colour ranges
+- Fetch and display weather data based on the location entered.
+- Add features like a 5-day forecast
+
 # weather-app
  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
