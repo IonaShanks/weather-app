@@ -1,4 +1,5 @@
 #Weather dashboard technical task
+Time limit of 5 hours.
 to Include:
 - API Integration with a public weather API (Used OpenWeatherMap)
 - A search bar for location input, display weather information and weather condition icons or images.
